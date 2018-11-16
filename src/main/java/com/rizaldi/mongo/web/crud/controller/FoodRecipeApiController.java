@@ -2,10 +2,8 @@ package com.rizaldi.mongo.web.crud.controller;
 
 import com.rizaldi.mongo.web.crud.model.FoodRecipe;
 import com.rizaldi.mongo.web.crud.repository.FoodRecipeRepository;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.bson.types.ObjectId;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api")
@@ -19,5 +17,10 @@ public class FoodRecipeApiController {
     @PostMapping("save")
     private FoodRecipe save(@ModelAttribute FoodRecipe recipe) {
         return repository.save(recipe);
+    }
+
+    @GetMapping("delete/{id}")
+    private void delete(@PathVariable String id) {
+        repository.deleteById(new ObjectId(id));
     }
 }

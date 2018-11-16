@@ -58,9 +58,9 @@
         var request = $.post("/api/save", data);
         request.done(function () {
             alert("Update Success");
-        })
+            location.reload();
+        });
     });
 </script>
-
 </body>
 </html>
