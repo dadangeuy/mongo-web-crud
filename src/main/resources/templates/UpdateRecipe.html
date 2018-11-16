@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Recipe</title>
+
+    <!--Bulma-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!--Handle Request-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form id="form">
+        <div class="field">
+            <div class="control">
+                <input type="hidden" name="id" th:value="${recipe.id}">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" type="text" name="Title" th:value="${recipe.Title}">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <textarea class="textarea" rows="4" name="Ingredients" th:text="${recipe.Ingredients}"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <textarea class="textarea" rows="4" name="Steps" th:text="${recipe.Steps}"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" type="text" name="Loves" th:value="${recipe.Loves}">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" type="text" name="URL" th:value="${recipe.URL}">
+            </div>
+        </div>
+        <button class="button is-primary is-outlined" type="submit">Update</button>
+        <a class="button is-danger is-outlined" href="/">Back</a>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $("#form").submit(function (event) {
+        event.preventDefault();
+        var data = $("#form").serializeObject();
+        var request = $.post("/api/save", data);
+        request.done(function () {
+            alert("Update Success");
+        })
+    });
+</script>
+
+</body>
+</html>

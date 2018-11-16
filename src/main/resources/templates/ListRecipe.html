@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Food Recipe</title>
+
+    <!--Bulma-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -18,6 +20,8 @@
             <th>Steps</th>
             <th>Loves</th>
             <th>URL</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
 
@@ -29,6 +33,16 @@
             <td th:text="${recipe.Steps}"></td>
             <td th:text="${recipe.Loves}"></td>
             <td th:text="${recipe.URL}"></td>
+            <td>
+                <a class="button is-primary is-outlined" th:href="@{|/update/${recipe.id}|}">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="button is-danger is-outlined" th:href="@{|/delete/${recipe.id}|}">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
