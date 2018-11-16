@@ -15,17 +15,21 @@
 </head>
 <body>
 <div class="container">
-    <table class="table is-bordered is-hoverable">
+
+    <table class="table is-fullwidth is-striped is-bordered is-hoverable">
         <thead>
         <tr>
-            <th><abbr title="Nomor">No.</abbr></th>
+            <th>No.</th>
             <th>Title</th>
             <th>Ingredients</th>
             <th>Steps</th>
             <th>Loves</th>
             <th>URL</th>
-            <th></th>
-            <th></th>
+            <th>
+                <a class="button is-link is-outlined" href="/create">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         </thead>
 
@@ -38,22 +42,23 @@
             <td th:text="${recipe.Loves}"></td>
             <td th:text="${recipe.URL}"></td>
             <td>
+                <span>
                 <a class="button is-primary is-outlined" th:href="@{|/update/${recipe.id}|}">
-                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-pencil-alt"></i>
                 </a>
-            </td>
-            <td>
                 <a class="button is-danger is-outlined" th:href="@{|/api/delete/${recipe.id}|}"
                    onclick="onClickDeleteButton(event)">
                     <i class="fas fa-trash-alt"></i>
                 </a>
+                </span>
             </td>
         </tr>
         </tbody>
     </table>
 
     <nav class="pagination" role="navigation">
-        <a class="pagination-previous" th:href="@{|/list/${currentPage - 1}|}">Previous</a>
+        <a th:if="${currentPage} == 0" class="pagination-previous" disabled>Previous</a>
+        <a th:if="${currentPage} > 0" class="pagination-previous" th:href="@{|/list/${currentPage - 1}|}">Previous</a>
         <a class="pagination-next" th:href="@{|/list/${currentPage + 1}|}">Next</a>
         <ul class="pagination-list"></ul>
     </nav>

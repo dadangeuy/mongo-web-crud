@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Food Recipe</title>
@@ -16,35 +16,32 @@
 <body>
 <div class="container">
     <form id="form">
-        <input type="hidden" name="id" th:value="${recipe.id}">
         <div class="field">
             <div class="control">
-                <input name="Title" class="input" type="text" placeholder="Title" th:value="${recipe.Title}">
+                <input name="Title" class="input" type="text" placeholder="Title">
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <textarea name="Ingredients" class="textarea" rows="4" placeholder="Ingredients"
-                          th:text="${recipe.Ingredients}"></textarea>
+                <textarea name="Ingredients" class="textarea" rows="4" placeholder="Ingredients"></textarea>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <textarea name="Steps" class="textarea" rows="4" placeholder="Steps"
-                          th:text="${recipe.Steps}"></textarea>
+                <textarea name="Steps" class="textarea" rows="4" placeholder="Steps"></textarea>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <input name="Loves" class="input" type="text" placeholder="Loves" th:value="${recipe.Loves}">
+                <input name="Loves" class="input" type="text" placeholder="Loves">
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <input name="URL" class="input" type="text" placeholder="URL" th:value="${recipe.URL}">
+                <input name="URL" class="input" type="text" placeholder="URL">
             </div>
         </div>
-        <button class="button is-primary is-outlined" type="submit">Update</button>
+        <button class="button is-primary is-outlined" type="submit">Create</button>
         <a class="button is-danger is-outlined" href="/">Back</a>
     </form>
 </div>
@@ -55,8 +52,8 @@
         var data = $("#form").serializeObject();
         var request = $.post("/api/save", data);
         request.done(function () {
-            alert("Update Success");
-            location.reload();
+            alert("Create Success");
+            window.location = "/";
         });
     });
 </script>

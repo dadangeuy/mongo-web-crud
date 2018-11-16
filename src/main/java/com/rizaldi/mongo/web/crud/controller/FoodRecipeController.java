@@ -38,4 +38,9 @@ public class FoodRecipeController {
         model.addAttribute("recipe", recipe);
         return "UpdateRecipe";
     }
+
+    @GetMapping("create")
+    public String updateListRecipe() {
+        return "CreateRecipe";
+    }
 }
