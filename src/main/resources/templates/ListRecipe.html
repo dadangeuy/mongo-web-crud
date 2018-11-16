@@ -31,10 +31,13 @@
             <td th:text="${recipe.URL}"></td>
         </tr>
         </tbody>
-
-        <tfoot>
-        </tfoot>
     </table>
+
+    <nav class="pagination" role="navigation">
+        <a class="pagination-previous" th:href="@{|/list/${currentPage - 1}|}">Previous</a>
+        <a class="pagination-next" th:href="@{|/list/${currentPage + 1}|}">Next</a>
+        <ul class="pagination-list"></ul>
+    </nav>
 </div>
 </body>
 </html>
