@@ -33,14 +33,14 @@ public class FoodRecipeController {
     }
 
     @GetMapping("update/{id}")
-    public String updateListRecipe(Model model, @PathVariable String id) {
+    public String viewUpdateRecipe(Model model, @PathVariable String id) {
         var recipe = repository.findById(new ObjectId(id)).get();
         model.addAttribute("recipe", recipe);
         return "UpdateRecipe";
     }
 
     @GetMapping("create")
-    public String updateListRecipe() {
+    public String viewCreateRecipe() {
         return "CreateRecipe";
     }
 }
